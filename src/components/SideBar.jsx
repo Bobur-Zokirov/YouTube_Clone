@@ -6,9 +6,9 @@ const SideBar = ({ selectedCategory, action }) => {
     <Stack
       direction="row"
       sx={{
-        overflowX: "auto",
         px: { sm: 0, md: 1 },
         flexDirection: { md: "column" },
+        overflowX: "auto",
       }}
     >
       {categories.map((category) => (
@@ -23,7 +23,7 @@ const SideBar = ({ selectedCategory, action }) => {
         >
           <span
             style={{
-              padding: "3px",
+              padding: "0px",
               color: category.name === selectedCategory ? "white" : "#FC1503",
             }}
           >
