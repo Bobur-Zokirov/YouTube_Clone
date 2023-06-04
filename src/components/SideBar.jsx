@@ -29,7 +29,11 @@ const SideBar = ({ selectedCategory, action }) => {
           >
             {category.icon}
           </span>
-          <span>{category.name}</span>
+          <span
+            style={{ opacity: category.name === selectedCategory ? 1 : 0.8 }}
+          >
+            {category.name}
+          </span>
         </button>
       ))}
     </Stack>

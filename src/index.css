@@ -81,6 +81,10 @@ a {
     .copyright {
         display: none !important;
     }
+
+    .logo {
+        margin-left: 0 !important
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -100,5 +104,11 @@ a {
 @media screen and (max-width: 450px) {
     .search-bar {
         width: 150px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .search-bar {
+        width: 120px;
     }
 }

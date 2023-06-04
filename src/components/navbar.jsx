@@ -14,10 +14,23 @@ const Navbar = () => {
         background: "#000",
         top: 0,
         justifyContent: "space-between",
+        zIndex: 999,
       }}
     >
-      <Link to="/">
+      <Link
+        className="logo"
+        to="/"
+        style={{
+          color: "white",
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          fontSize: "20px",
+          marginLeft: "20px",
+        }}
+      >
         <img src={logo} alt="logo" height="45px" />
+        <Box sx={{ display: { xs: "none", md: "block" } }}>YouTube</Box>
       </Link>
       <SearchBar />
       <Box />
