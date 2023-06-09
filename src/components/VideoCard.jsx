@@ -8,54 +8,86 @@ import {
   Typography,
 } from "@mui/material";
 import moment from "moment";
+import { Link } from "react-router-dom";
+import { demoProfilePicture, demoThumbnailUrl } from "../utils/constants";
 
 const VideoCard = ({ video }) => {
   return (
     <Card
       sx={{
-        width: "320px",
+        width: { xs: "100%", sm: "320px", md: "300px" },
         boxShadow: "none",
         borderRadius: 0,
       }}
     >
-      <CardMedia
-        image={video?.snippet?.thumbnails?.high?.url}
-        alt={video?.snippet?.title}
-        sx={{ width: "360px", height: "180px" }}
-      />
+      <Link to={video?.id?.videoId && `/video/${video?.id?.videoId}`}>
+        <CardMedia
+          image={video?.snippet?.thumbnails?.high?.url || demoThumbnailUrl}
+          alt={video?.snippet?.title}
+          sx={{
+            width: { xs: "105%", sm: "320px", md: "320px" },
+            height: "180px",
+            padding: 0,
+          }}
+        />
+      </Link>
       <CardContent
-        sx={{ bgcolor: "#b1acac", height: "180px", position: "relative" }}
+        sx={{
+          bgcolor: "#1e1e1e",
+          color: "whitesmoke",
+          height: "106px",
+          position: "relative",
+        }}
       >
         <>
           <Typography
             sx={{
-              mx: "5px",
-              opacity: "0.6",
+              opacity: "0.8",
               fontSize: "14px",
             }}
           >
             {moment(video?.snippet?.publishedAt).fromNow()}
           </Typography>
-          <Typography variant="subtitle1" fontWeight={"bold"}>
-            {video?.snippet?.title.slice(0, 50)}
-          </Typography>
-          <Typography variant="subtitle2" sx={{ opacity: 0.6 }}>
-            {video?.snippet?.description.slice(0, 70)}
-          </Typography>
+          <Link to={video?.id?.videoId && `/video/${video?.id?.videoId}`}>
+            <Typography
+              variant="subtitle1"
+              fontWeight={"bold"}
+              color="whitesmoke"
+            >
+              {video?.snippet?.title.slice(0, 50)}
+            </Typography>
+          </Link>
         </>
-        <Stack
-          direction={"row"}
-          position={"absolute"}
-          bottom={"10px"}
-          alignItems={"center"}
-          gap={"5px"}
+        <Link
+          to={
+            video?.snippet?.channelId && `/channel/${video?.snippet?.channelId}`
+          }
         >
-          <Avatar src={video?.snippet?.thumbnails?.high?.url} />
-          <Typography variant="subtitle2" color={"#000"}>
-            {video?.snippet?.channelTitle}
-          </Typography>
-          <CheckCircle sx={{ fontSize: "12px", color: "#000", ml: "5px" }} />
-        </Stack>
+          <Stack
+            direction={"row"}
+            position={"absolute"}
+            bottom={"10px"}
+            alignItems={"center"}
+            gap={"5px"}
+          >
+            <Avatar
+              src={video?.snippet?.thumbnails?.high?.url || demoProfilePicture}
+            />
+            <Typography variant="subtitle2" color={"#e3e3e3"} opacity="0.6">
+              {video?.snippet?.channelTitle}
+            </Typography>
+            <CheckCircle
+              sx={{
+                fontSize: "10px",
+                color: "gray",
+                ml: "5px",
+                // position: "absolute",
+                // right: "-12px",
+                // top: "5px",
+              }}
+            />
+          </Stack>
+        </Link>
       </CardContent>
     </Card>
   );

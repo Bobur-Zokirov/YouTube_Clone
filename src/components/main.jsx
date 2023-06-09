@@ -43,7 +43,14 @@ const Main = () => {
         <Typography className="copyright">Copyright Media 2023</Typography>
       </Box>
 
-      <Box pt={2} sx={{ height: "100vh", overflowY: "auto", flex: 2 }}>
+      <Box
+        pt={2}
+        sx={{
+          height: "100vh",
+          overflowY: "auto",
+          flex: 2,
+        }}
+      >
         <Container maxWidth="90%">
           <Typography variant="h4" fontWeight="bold" mb={2}>
             {selectedCategory}
